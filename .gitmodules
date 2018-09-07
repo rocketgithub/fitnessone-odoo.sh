@@ -2,3 +2,11 @@
 	path = l10n_gt_extra
 	url = git@github.com:rocketgithub/l10n_gt_extra.git
 	branch = 11.0
+[submodule "conciliacion_bancaria"]
+	path = conciliacion_bancaria
+	url = git@github.com:rocketgithub/conciliacion_bancaria.git
+	branch = 11.0
+[submodule "bolson"]
+	path = bolson
+	url = git@github.com:rocketgithub/bolson.git
+	branch = 11.0
