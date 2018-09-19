@@ -10,3 +10,6 @@
 	path = bolson
 	url = git@github.com:rocketgithub/bolson.git
 	branch = 11.0
+[submodule "fitnessone"]
+	path = fitnessone
+	url = git@github.com:rocketgithub/fitnessone.git
