@@ -13,3 +13,6 @@
 [submodule "fitnessone"]
 	path = fitnessone
 	url = git@github.com:rocketgithub/fitnessone.git
+[submodule "presupuesto_etiquetas"]
+	path = presupuesto_etiquetas
+	url = git@github.com:rocketgithub/presupuesto_etiquetas.git
