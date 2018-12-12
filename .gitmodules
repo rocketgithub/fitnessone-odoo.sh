@@ -16,3 +16,7 @@
 [submodule "presupuesto_etiquetas"]
 	path = presupuesto_etiquetas
 	url = git@github.com:rocketgithub/presupuesto_etiquetas.git
+[submodule "pos_gt"]
+	path = pos_gt
+	url = https://github.com/rocketgithub/pos_gt.git
+	branch = 11.0
