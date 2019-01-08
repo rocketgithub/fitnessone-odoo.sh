@@ -20,3 +20,10 @@
 	path = pos_gt
 	url = https://github.com/rocketgithub/pos_gt.git
 	branch = 11.0
+[submodule "pos_gface"]
+	path = pos_gface
+	url = https://github.com/rocketgithub/pos_gface.git
+	branch = 11.0
+[submodule "gface_guatefactura"]
+	path = gface_guatefactura
+	url = https://github.com/rocketgithub/gface_guatefactura.git
