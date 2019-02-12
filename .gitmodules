@@ -27,3 +27,7 @@
 [submodule "gface_guatefactura"]
 	path = gface_guatefactura
 	url = https://github.com/rocketgithub/gface_guatefactura.git
+[submodule "rrhh"]
+	path = rrhh
+	url = https://github.com/rocketgithub/rrhh.git
+	branch = 11.0
