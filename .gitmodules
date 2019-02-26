@@ -31,3 +31,7 @@
 	path = rrhh
 	url = https://github.com/rocketgithub/rrhh.git
 	branch = 11.0
+[submodule "albaran_analitico"]
+	path = albaran_analitico
+	url = https://github.com/rocketgithub/albaran_analitico.git
+	branch = 10.0
