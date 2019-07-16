@@ -39,3 +39,6 @@
 	path = kardex
 	url = https://github.com/rocketgithub/kardex.git
 	branch = 11.0
+[submodule "activos"]
+	path = activos
+	url = https://github.com/rocketgithub/activos.git
