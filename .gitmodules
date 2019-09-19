@@ -39,3 +39,6 @@
 	path = kardex
 	url = https://github.com/rocketgithub/kardex.git
 	branch = 11.0
+[submodule "fel_infile"]
+	path = fel_infile
+	url = https://github.com/rocketgithub/fel_infile.git
