@@ -42,3 +42,6 @@
 [submodule "activos"]
 	path = activos
 	url = https://github.com/rocketgithub/activos.git
+[submodule "fel_infile"]
+	path = fel_infile
+	url = https://github.com/rocketgithub/fel_infile.git
