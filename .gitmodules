@@ -45,3 +45,7 @@
 [submodule "fel_infile"]
 	path = fel_infile
 	url = https://github.com/rocketgithub/fel_infile.git
+[submodule "asistelibros"]
+	path = asistelibros
+	url = https://github.com/rocketgithub/asistelibros.git
+	branch = 11.0
