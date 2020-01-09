@@ -49,3 +49,6 @@
 	path = asistelibros
 	url = https://github.com/rocketgithub/asistelibros.git
 	branch = 11.0
+[submodule "pos_masivo"]
+	path = pos_masivo
+	url = https://github.com/rocketgithub/pos_masivo.git
