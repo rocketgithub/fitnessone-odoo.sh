@@ -52,3 +52,6 @@
 	path = asistelibros
 	url = https://github.com/rocketgithub/asistelibros.git
 	branch = 11.0
+[submodule "fel_infile_nit"]
+	path = fel_infile_nit
+	url = https://github.com/rocketgithub/fel_infile_nit.git
