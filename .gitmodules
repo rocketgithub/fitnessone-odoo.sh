@@ -45,3 +45,10 @@
 [submodule "activos"]
 	path = activos
 	url = https://github.com/rocketgithub/activos.git
+[submodule "pos_masivo"]
+	path = pos_masivo
+	url = https://github.com/rocketgithub/pos_masivo.git
+[submodule "asistelibros"]
+	path = asistelibros
+	url = https://github.com/rocketgithub/asistelibros.git
+	branch = 11.0
