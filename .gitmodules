@@ -52,3 +52,6 @@
 [submodule "pos_masivo"]
 	path = pos_masivo
 	url = https://github.com/rocketgithub/pos_masivo.git
+[submodule "fel_infile_nit"]
+	path = fel_infile_nit
+	url = https://github.com/rocketgithub/fel_infile_nit.git
