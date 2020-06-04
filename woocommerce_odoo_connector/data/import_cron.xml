@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+    <data noupdate="1">
+        <!-- Import Cron -->
+        <record  id="ir_cron_import_woocommerce_products" model="ir.cron">
+            <field name="name">Import Products</field>
+            <field name="active">False</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'multi.channel.sale'" name="model"/>
+            <field name="model_id" ref="model_multi_channel_sale"/>
+            <field name="state">code</field>
+            <field name="code">model.import_woocommerce_products_cron()</field>
+        </record>
+
+        <!-- Import Order Cron -->
+        <record  id="ir_cron_import_woocommerce_orders" model="ir.cron">
+            <field name="name">Import Orders</field>
+            <field name="active">False</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'multi.channel.sale'" name="model"/>
+	        <field name="model_id" ref="model_multi_channel_sale"/>
+            <field name="state">code</field>
+            <field name="code">model.import_woocommerce_orders_cron()</field>
+           <!-- <field eval="'import_woocommerce_orders_cron'" name="function"/>-->
+        </record>
+
+        <!-- Import Order Update Cron -->
+        <!-- <record  id="ir_cron_import_woocommerce_orders_update" model="ir.cron">
+            <field name="name">Import Orders Update</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'multi.channel.sale'" name="model"/>
+	        <field name="model_id" ref="model_multi_channel_sale"/>
+            <field name="state">code</field>
+            <field name="code">model.import_woocommerce_orders_update_cron()</field>
+        </record> -->
+
+        <!-- Export Cron -->
+        <!--<record  id="ir_cron_export_woocommerce_products" model="ir.cron">
+            <field name="name">Export Products</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'multi.channel.sale'" name="model"/>
+            <field eval="'export_woocommerce_product_cron'" name="function"/>
+        </record>-->
+        <!--<record  id="ir_cron_export_woocommerce_categories" model="ir.cron">
+            <field name="name">Export Categories</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'multi.channel.sale'" name="model"/>
+            <field eval="'export_woocommerce_category_cron'" name="function"/>
+        </record>-->
+	</data>
+</odoo>

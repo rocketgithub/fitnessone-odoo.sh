@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  	<data noupdate="1" >
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+       <act_window id="export_odoo_product_template_action"
+            name="Export/Update Templates"
+            src_model="product.template"
+            res_model="export.templates"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+        <act_window id="export_odoo_products_action"
+             name="Export/Update Products"
+             src_model="product.product"
+             res_model="export.products"
+             view_type="form" view_mode="form"
+             key2="client_action_multi" target="new"/>
+
+       <act_window id="export_odoo_products_category"
+            name="Export/Update Categories"
+            src_model="product.category"
+            res_model="export.categories"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+       <!-- <record id="ir_export_odoo_product_template" model="ir.actions.act_window">
+            <field name="name">Export/Update Templates</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.templates</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="product.model_product_template" />
+
+        </record> -->
+        <!-- <act_window
+              id="odoo_multi_channel_sale.action_update_mapping"
+              name="All Invoices"
+              res_model="account.invoice"
+              domain="[('partner_id', 'child_of', active_id)]"
+              src_model="channel.product.mappings"/> -->
+             <!-- <record id="evaluate_product_feed_values11" model="ir.actions.server">
+                   <field name="name">Evaluate Product MappingSSS</field>
+                   <field name="type">ir.actions.server</field>
+                   <field name="model_id" ref="model_product_feed"/>
+                   <field name="state">code</field>
+                   <field name="code">
+                       if records:
+                           action = records.import_items()
+                   </field>
+                   <field name="binding_model_id" ref="model_product_feed"/>
+               </record> -->
+
+               <!-- <server id="evaluate_product_feed_values_x"
+                    name="Update Product Mapping"
+                    src_model="product.feed"
+                    res_model="product.feed"
+                    key2="client_action_multi"/> -->
+
+
+        <act_window id="update_product_mappings"
+             name="Update Product Mapping"
+             src_model="channel.product.mappings"
+             res_model="update.mapping.wizard"
+             view_type="form" view_mode="form"
+             key2="client_action_multi" target="new"/>
+
+       <act_window id="update_template_mappings"
+            name="Update Template Mapping"
+            src_model="channel.template.mappings"
+            res_model="update.mapping.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+        <act_window id="update_categ_mappings"
+            name="Update Category Mapping"
+            src_model="channel.category.mappings"
+            res_model="update.mapping.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+      <act_window id="update_Order_mappings"
+          name="Update Order Mapping"
+          src_model="channel.order.mappings"
+          res_model="update.mapping.wizard"
+          view_type="form" view_mode="form"
+          key2="client_action_multi" target="new"/>
+      <act_window id="update_Partner_mappings"
+          name="Update Partner Mapping"
+          src_model="channel.partner.mappings"
+          res_model="update.mapping.wizard"
+          view_type="form" view_mode="form"
+          key2="client_action_multi" target="new"/>
+
+      <act_window id="update_Account_mappings"
+         name="Update Account Mapping"
+         src_model="channel.account.mappings"
+         res_model="update.mapping.wizard"
+         view_type="form" view_mode="form"
+         key2="client_action_multi" target="new"/>
+
+       <act_window id="update_Account_Journal_mappings"
+         name="Update Account Journal Mapping"
+         src_model="channel.account.journal.mappings"
+         res_model="update.mapping.wizard"
+         view_type="form" view_mode="form"
+         key2="client_action_multi" target="new"/>
+       <act_window id="update_Shipping_mappings"
+            name="Update Shipping Mapping"
+            src_model="channel.shipping.mappings"
+            res_model="update.mapping.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+        <act_window id="update_Pricelist_mappings"
+          name="Update Pricelist Mapping"
+          src_model="channel.pricelist.mappings"
+          res_model="update.mapping.wizard"
+          view_type="form" view_mode="form"
+          key2="client_action_multi" target="new"/>
+
+          <act_window id="action_feed_sync"
+            name="Update Pricelist Mapping"
+            src_model="channel.pricelist.mappings"
+            res_model="update.mapping.wizard"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"/>
+
+        <!-- <record id="action_feed_sync" model="ir.actions.server">
+              <field name="name">Evaluate Feed</field>
+              <field name="type">ir.actions.server</field>
+              <field name="model_id" ref="odoo_multi_channel_sale.model_wk_feed"/>
+              <field name="state">code</field>
+              <field name="code">
+                  if records:
+                      action = records.import_items()
+              </field>
+              <field name="binding_model_id" ref="odoo_multi_channel_sale.model_wk_feed"/>
+          </record> -->
+
+
+	</data>
+</openerp>

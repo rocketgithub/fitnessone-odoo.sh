@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+        <!-- Import Products-->
+        <record id="import_update_form_view" model="ir.ui.view">
+            <field name="name">product.import.update.form</field>
+            <field name="model">product.import.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                            <field name="one_time_import" 
+                            attrs="{'invisible': [('import_update','=','update')]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'invisible': ['|',('one_time_import','=',True),('import_update','=','update')],'required': [('one_time_import','=',False),('import_update','=','import')]}"/>
+                            <!--<p cols='2'><h2><b>Note:</b> For Import of large no. of  use One Time Import</h2></p>-->
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <p><i><li> Select import to import Products from woocommerce to odoo</li>
+                            <li> Select update to update Products from woocommerce to odoo</li>
+                             <li>To Import large no. of Products use First Time Import</li></i></p>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_import_update_form_view" model="ir.actions.act_window">
+            <field name="name">Product Operation</field>
+            <field name="res_model">product.import.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="import_update_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+
+        <!-- Import Order-->
+        <record id="order_import_update_form_view" model="ir.ui.view">
+            <field name="name">order.import.update.form</field>
+            <field name="model">order.import.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                            <field name="one_time_import" 
+                            attrs="{'invisible': [('import_update','=','update')]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'invisible': ['|',('one_time_import','=',True),('import_update','=','update')],'required': [('one_time_import','=',False),('import_update','=','import')]}"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <p><i><li> Select import to import orders from woocommerce to odoo</li>
+                            <li> Select update to update orders from woocommerce to odoo</li>
+                             <li>To Import large no. of Orders use First Time Import</li></i></p>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_order_import_update_form_view" model="ir.actions.act_window">
+            <field name="name">Order Operation</field>
+            <field name="res_model">order.import.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="order_import_update_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Import Customers-->
+        <record id="customer_import_update_form_view" model="ir.ui.view">
+            <field name="name">partner.import.update.form</field>
+            <field name="model">partner.import.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                            <field name="one_time_import" 
+                            attrs="{'invisible': [('import_update','=','update')]}"
+                            />
+                        </group>
+                        <group>
+                            <field name="date" attrs="{'invisible': ['|',('one_time_import','=',True),('import_update','=','update')],'required': [('one_time_import','=',False),('import_update','=','import')]}"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                            <p><i><li> Select import to import Customers from woocommerce to odoo</li>
+                            <li> Select update to update Customers from woocommerce to odoo</li>
+                             <li>To Import large no. of Customers use First Time Import</li></i></p>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_customer_import_update_form_view" model="ir.actions.act_window">
+            <field name="name">Customer Operation</field>
+            <field name="res_model">partner.import.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="customer_import_update_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Import Category-->
+        <record id="category_import_update_form_view" model="ir.ui.view">
+            <field name="name">category.import.update.form</field>
+            <field name="model">category.import.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                            <!-- <field name="one_time_import" 
+                            attrs="{'invisible': [('import_update','=','update')]}"
+                            /> -->
+                        </group>
+                        <!-- <group>
+                            <field name="date" attrs="{'invisible': [('one_time_import','=',True)],'required': [('one_time_import','=',False)]}"/>
+                        </group> -->
+                        <group>
+                            <p><i><li> Select import to import categories from woocommerce to odoo</li>
+                            <li> Select update to update categories from woocommerce to odoo</li>
+                            </i></p>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_category_import_update_form_view" model="ir.actions.act_window">
+            <field name="name">Category Operation</field>
+            <field name="res_model">category.import.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="category_import_update_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Export Attributes
+        <record id="export_update_attribute_form_view" model="ir.ui.view">
+            <field name="name">attribute.export.update.form</field>
+            <field name="model">attribute.export.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_export_update_attribute_form_view" model="ir.actions.act_window">
+            <field name="name">Attribute & Values  Operation</field>
+            <field name="res_model">attribute.export.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="export_update_attribute_form_view"/>
+            <field name="target">new</field>
+        </record> -->
+
+        <!--Export Categories-->
+        <record id="export_update_category_form_view" model="ir.ui.view">
+            <field name="name">category.export.update.form</field>
+            <field name="model">category.export.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                        </group>
+                        <group>
+                        <p><i><li> Select export to export categories from odoo to woocommerce</li>
+                            <li> Select update to update categories from odoo to woocommerce</li>
+                            </i></p>
+                    </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_export_update_category_form_view" model="ir.actions.act_window">
+            <field name="name">Category  Operation</field>
+            <field name="res_model">category.export.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="export_update_category_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <!--Export Products-->
+        <record id="export_update_form_view" model="ir.ui.view">
+            <field name="name">product.export.update.form</field>
+            <field name="model">product.export.update</field>
+            <field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="import_update" widget='radio'/>
+                        </group>
+                        <group>
+                        <p><i><li> Select export to export Products from odoo to woocommerce</li>
+                            <li> Select update to update Products from odoo to woocommerce</li>
+                            </i></p>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                        <button name="process" class="oe_highlight" type='object' string="submit" />
+                        <button special="cancel" name='cancel' string="Cancel" />
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_export_update_form_view" model="ir.actions.act_window">
+            <field name="name">Product  Operation</field>
+            <field name="res_model">product.export.update</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="export_update_form_view"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

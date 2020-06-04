@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+		<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+		<record id="view_multichannel_config_settings" model="ir.ui.view">
+            <field name="name">Multi Channel sale Config</field>
+            <field name="model">multi.channel.sale.config</field>
+            <field name="arch" type="xml">
+                <form string="Configure Terms and Condition" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="button" name="cancel" class="oe_link"/>
+                    </header>
+                     <group name='global_config' string='Global Configuration'>
+                       <field name="avoid_duplicity"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="multi_channel_sale_config_id" model="ir.actions.act_window">
+            <field name="name">Multi Channel Sale Configuration</field>
+            <field name="res_model">multi.channel.sale.config</field>
+           <field name="view_mode">form</field>
+            <field name="target">inline</field>
+
+
+        </record>
+	</data>
+</openerp>

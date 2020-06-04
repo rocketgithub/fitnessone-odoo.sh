@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+	<data noupdate='1'>
+		<record id="sales_team_woocommerce" model="crm.team">
+			<field name="name">WooCommerce Sales</field>
+			<field name="member_ids" eval="[(4, ref('base.user_root'))]"/>
+		</record>
+ 
+		<record id="woocommerce_channel" model="multi.channel.sale">
+            <field name="name">WooCommerce</field>
+            <field name="channel">woocommerce</field>
+            <field name="environment">sandbox</field>
+            <field name="debug">enable</field>
+	        <field name="auto_evaluate_feed">True</field>
+			<field name="auto_sync_stock">True</field>
+	        <field name="discount_product_id" ref='odoo_multi_channel_sale.discount_product'/>
+			<field name="import_product_date">"01/01/2017"</field>
+            <field name="import_customer_date">"01/01/2017"</field>
+			<field name="import_order_date">"01/01/2017"</field>
+            <field name="update_product_date">"01/01/2017"</field>
+			<field name="update_customer_date">"01/01/2017"</field>
+            <field name="update_order_date">"01/01/2017"</field>
+	        <field name="order_state_ids" eval="[(0,0,{'channel_state':'on-hold','default_order_state':True,'odoo_order_state':'draft'}),(0,0,{'channel_state':'pending','odoo_order_state':'sale'}),(0,0,{'channel_state':'completed','odoo_create_invoice':True, 'odoo_set_invoice_state':'paid', 'odoo_ship_order':True,'odoo_order_state':'done'}),(0,0,{'odoo_order_state':'cancelled','channel_state':'cancelled'})]" />
+			<field name="crm_team_id"  ref='sales_team_woocommerce'/>
+        </record>
+	</data>
+</odoo>

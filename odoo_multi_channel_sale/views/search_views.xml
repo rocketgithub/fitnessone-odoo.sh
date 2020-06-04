@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record id="channel_shipping_mappings_search" model="ir.ui.view">
+            <field name="name">channel.shipping.mappings.search</field>
+            <field name="model">channel.shipping.mappings</field>
+            <field name="arch" type="xml">
+            <search string="Channel Shipping Mappings" >
+                 <group expand="0" string="Group By...">
+                    <filter string="Channel" name="filter_by_ecom_store" context="{'group_by':'ecom_store'}"/>
+                    <filter string="Instance" name="filter_by_channel_id" context="{'group_by':'channel_id'}"/>
+                    <filter string="Need Update" name='need_sync'  domain="[]" context="{'group_by':'need_sync'}"/>
+                    <group string='Filters'>
+                        <filter icon="terp-check" name="ecom_store" string="Channel"
+                            domain="[]" help="Channel" context="{'group_by':'ecom_store'}"/>
+                            <filter icon="terp-check" name="channel_id" string="Channel"
+                            domain="[]" help="Instance" context="{'group_by':'channel_id'}"/>
+                    </group>
+
+                 </group>
+            </search>
+            </field>
+        </record>
+      </data>
+</openerp>

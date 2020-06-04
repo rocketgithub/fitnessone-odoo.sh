@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate='1'>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+
+          <function id="set_avoid_duplicity"
+          model="ir.default" name="set"
+          eval="('multi.channel.sale.config', 'avoid_duplicity', True)"/>
+
+        <record forcecreate='True' model="ir.sequence" id="category_feed_sequence_id">
+            <field name="name">Category Feeds</field>
+            <field name="code">category.feed.sequence</field>
+            <field name="prefix">Categ-Feed</field>
+            <field name="padding">5</field>
+        </record>
+        <record forcecreate='True' model="ir.sequence" id="product_feed_sequence_id">
+            <field name="name">Product Feeds</field>
+            <field name="code">product.feed.sequence</field>
+            <field name="prefix">Product-Feed</field>
+            <field name="padding">5</field>
+        </record>
+        <record forcecreate='True' model="ir.sequence" id="product_sequence_id">
+            <field name="name">Product</field>
+            <field name="code">product.sequence</field>
+            <field name="prefix">Ecom-</field>
+            <field name="padding">5</field>
+        </record>
+        <record id="discount_product" forcecreate='True' model="product.product">
+            <field name="name">Discount Product</field>
+            <field name="type">service</field>
+        </record>
+        <record id="delivery_product" forcecreate='True' model="product.product">
+            <field name="name">Delivery Product</field>
+            <field name="type">service</field>
+        </record>
+    </data>
+</odoo>

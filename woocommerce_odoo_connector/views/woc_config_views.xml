@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<odoo>
+	<data>
+		<record id='inherited_multi_channel_sale_woocommerce' model="ir.ui.view">
+			<field name='name'>multi.channel.sale.woocommerce</field>
+			<field name='model'>multi.channel.sale</field>
+			<field name="inherit_id" ref="odoo_multi_channel_sale.multi_channel_view_form" />
+			<field name='arch' type='xml'>
+									<!-- Import  -->
+				<xpath expr="//field[@name='api_record_limit']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				<xpath expr="//group[@name='import_buttons']" position='inside'>
+					<separator string="Import From WooCommerce" colspan="4" attrs="{'invisible':[('channel','!=','woocommerce')]}" />
+					<group attrs="{'invisible':[('channel','!=','woocommerce')]}" col="4" >
+	                	<button
+	                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+	                    name="woocommerce_odoo_connector.action_customer_import_update_form_view"
+	                    type="action"
+						style="height:100px;margin:0 5px;"
+	                    class="oe_highlight wk_operation_btn box oe_left"
+	                    icon="fa-5x fa-user "
+	                    help="It will import Customers on Odoo from WooCommerce"
+						aria-label="Import Customers"
+						title="Import Customers"
+						>
+						<span> Import/Update Customers</span> <span> <i class='fa fa-fw fa-cloud-download'/></span>
+	                	</button>
+	                	<button
+	                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+	                    name="woocommerce_odoo_connector.action_category_import_update_form_view"
+	                    type="action"
+	                    class="oe_highlight wk_operation_btn box oe_left"
+						style="height:100px;margin:0 5px;"
+	                    icon="fa-5x fa-sitemap"
+						aria-label="Import Categories"
+						title="Import Categories"
+	                    help="It will import Categories on Odoo from WooCommerce">
+	                    <span> Import/Update Categories</span> <span> <i class='fa fa-fw fa-cloud-download'/></span>
+	                	</button>
+						<button
+	                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+	                    name="woocommerce_odoo_connector.action_import_update_form_view"
+	                    type="action"
+	                    class="oe_highlight wk_operation_btn box oe_left"
+	                    icon="fa-5x fa-dropbox"
+						style="height:100px;margin:0 5px;"
+						aria-label=""
+						title=""
+	                    help="It will import  Products on Odoo from WooCommerce">
+	                    <span> Import/Update Products</span> <span> <i class='fa fa-fw fa-cloud-download'/></span>
+	                	</button>
+						<button
+	                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+	                    name= "woocommerce_odoo_connector.action_order_import_update_form_view"
+	                    type="action"
+	                    class="oe_highlight wk_operation_btn box oe_left"
+	                    icon="fa-5x fa-shopping-cart "
+						style="height:100px;margin:0 5px;"
+						aria-label="Import Orders"
+						title="Import Orders"
+	                    help="It will import Orders on Odoo from WooCommerce">
+	                    <span> Import/Update Orders</span> <span> <i class='fa fa-fw fa-cloud-download'/></span>
+	                	</button>
+					</group>
+									<!-- Export -->
+					<separator string="Export To WooCommerce"  colspan="4" attrs="{'invisible':[('channel','!=','woocommerce')]}" />
+					<group attrs="{'invisible':[('channel','!=','woocommerce')]}" col="3" >
+
+						<button
+		                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+		                    name="export_woocommerce_attributes_values"
+		                    type="object"
+		                    class="oe_highlight wk_operation_btn box oe_right"
+		                    icon="fa-5x fa-sliders "
+							style="height:100px;margin:0 5px;"
+							aria-label="Export Attributes"
+							title="Export Attributes"
+		                    help="It will Export Attributes and Values from Odoo to WooCommerce">
+		                    <span>Export Attribute and Values</span> <span> <i class='fa fa-fw fa-cloud-upload'/></span>
+                		</button>
+						<button
+		                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+		                    name="woocommerce_odoo_connector.action_export_update_category_form_view"
+		                    type="action"
+		                    class="oe_highlight wk_operation_btn box oe_right"
+		                    icon="fa-5x fa-sitemap"
+							style="height:100px;margin:0 5px;"
+							aria-label="Export Categories"
+							title="Export Categories"
+		                    help="It will Export  Categories from Odoo to WooCommerce">
+                    		<span>Export/Update Categories</span> <span> <i class='fa fa-fw fa-cloud-upload'/></span>
+		                </button>
+						<button
+		                    attrs= "{'invisible':['!',('channel','!=', 'WooCommerce'),('state','!=','validate')]}"
+		                    name="woocommerce_odoo_connector.action_export_update_form_view"
+		                    type="action"
+		                    class="oe_highlight wk_operation_btn box oe_right"
+							style="height:100px;margin:0 5px;"
+		                    icon="fa-5x fa-dropbox"
+							aria-label="Export Categories"
+							title="Export Categories"
+		                    help="It will Export Products from Odoo to WooCommerce">
+		                    <span>Export/Update Products</span> <span> <i class='fa fa-fw fa-cloud-upload'/></span>
+                		</button>
+					</group>
+				</xpath>
+				<group name='credentials'  position="inside">
+					<group col='1' attrs="{'invisible':[('channel','!=','woocommerce')]}" >
+							<field name='url' style="width:400px" attrs="{'required':[('channel','=','woocommerce')],'readonly': [('state','=','validate')]}"/>
+							<field name='consumer_key' password='True' style="width:500px" attrs="{'required':[('channel','=','woocommerce')], 'readonly': [('state','=','validate')]}" />
+							<field name='secret_key' password='True' style="width:500px" attrs="{'required':[('channel','=','woocommerce')], 'readonly': [('state','=','validate')]}" />
+					</group>
+				</group>
+				<xpath expr="//group[@name='advanced_configuration']" position="after">
+					<group attrs="{'invisible':[('channel','!=','woocommerce')]}" col='1'>
+						<!--<div>
+							<group string='WooCommerce Settings'>
+									<group string="Import Settings">
+										<field name="woocommerce_import_product_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+										<field name="woocommerce_import_customer_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+										<field name="woocommerce_import_order_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+									</group>
+									<group string="Import Update Settings">
+										<field name="woocommerce_update_product_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+										<field name="woocommerce_update_customer_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+										<field name="woocommerce_update_order_date" attrs="{'required':[('channel','=','woocommerce')]}"/>
+									</group>
+							</group>
+						</div>-->
+						<div>
+							<group string="Cron Settings">
+									<group>
+										<field name="woocommerce_feed_cron"/>
+									</group>
+									<span/>
+									<group string="Import Cron">
+										<field name="woocommerce_is_import" string="Order/Product"/>
+									</group>
+									<!--<group string="Export Cron">
+										<field name="woocommerce_is_export"/>
+									</group>-->
+									<group string="Cron Interval Settings">
+										<field name="woocommerce_interval_type" style="width:100px"/>
+										<field name="woocommerce_intervals"/>
+									</group>
+							</group>
+						</div>
+					</group>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="inherited_template_export">
+			<field name="name">inherited.template.export</field>
+			<field name="model">export.templates</field>
+			<field name="inherit_id" ref="odoo_multi_channel_sale.export_odoo_templates_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//button[@name='cancel']" position='after'>
+					<button name="submit" string="Submit" type="object"/>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

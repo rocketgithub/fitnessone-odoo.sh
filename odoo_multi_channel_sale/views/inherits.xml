@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+
+      <record model="ir.ui.view"
+         id="product_template_form_view">
+            <field name="name">wk.product.dimensions.product.template.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id"
+             ref="product.product_template_form_view"/>
+           <field name="arch" type="xml">
+             <xpath expr="//notebook/page[1]" position="inside">
+             <group>
+               <group>
+                 <field name="length"/>
+                 <field name="width"/>
+
+               </group>
+               <group>
+                 <field name="height"/>
+                 <field name="dimensions_uom_id"/>
+               </group>
+            </group>
+
+           </xpath>
+         </field>
+        </record>
+
+      <record model="ir.ui.view"
+          id="odoo_multi_channel_sale.product_template_only_form_view">
+           <field name="name">odoo.multi.channel.sale.product.template.form</field>
+           <field name="model">product.template</field>
+           <field name="inherit_id"
+            ref="product.product_template_only_form_view"/>
+          <field name="arch" type="xml">
+            <field name="barcode" position='after'>
+              <field name="wk_product_id_type" attrs="{'invisible': [('product_variant_count', '>', 1)]}"/>
+
+            </field>
+            <xpath expr="//page[last()]" position="after">
+              <page name='channel' string='Channel'>
+                 <group name='channel_category_ids' string="Extra Categories">
+                  <field name="channel_category_ids" widget="one2many_list" nolabel='1'>
+                    <tree editable="bottom">
+                        <field name='instance_id'/>
+                        <field name='extra_category_domain_ids' invisible="1"/>
+                        <field name= 'extra_category_ids' widget="many2many_tags" options="{'no_create_edit': True}" attrs= "{'readonly':[('instance_id','=', False)]}"/>
+                    </tree>
+                  </field>
+                </group>
+                <group name='mapping' string="Mappings">
+                  <field name="channel_mapping_ids" readonly='1' nolabel='1'/>
+                </group>
+                <notebook name='channel'>
+
+                </notebook>
+              </page>
+            </xpath>
+            </field>
+        </record>
+      <record model="ir.ui.view"
+        id="odoo_multi_channel_sale.product_normal_form_view">
+           <field name="name">odoo.multi.channel.sale.product.product.form</field>
+           <field name="model">product.product</field>
+           <field name="inherit_id"
+            ref="product.product_normal_form_view"/>
+            <field name="groups_id" eval="[(4, ref('odoo_multi_channel_sale.group_multi_channel_user'))]"/>
+          <field name="arch" type="xml">
+            <field name="lst_price" position="after">
+              <label for="price_extra" string="Final Variant`s Extra Price"/>
+              <div>
+                <span><field name="attr_price_extra" nolabel="1" class="oe_inline" /><label string="+" class="oe_inline"/>
+                  <field name="wk_extra_price" nolabel="1" required='1' class="oe_inline"/><label string="=" class="oe_inline"/>
+                  <field name="price_extra" nolabel="1" class="oe_inline" />
+                </span>
+            </div>
+            </field>
+
+            <field name="barcode" position='after'>
+              <field name="wk_product_id_type"/>
+
+            </field>
+            <xpath expr="//notebook" position="inside">
+            <page name='channel' string='Channel'>
+              <group name='mapping' string="Mappings">
+                <field name="channel_mapping_ids" readonly='1' nolabel='1'/>
+              </group>
+              <notebook name='channel'>
+
+              </notebook>
+            </page>
+          </xpath>
+          </field>
+        </record>
+        <record model="ir.ui.view"
+        id="odoo_multi_channel_sale.product_category_form_view">
+           <field name="name">odoo.multi.channel.sale.product.category.form</field>
+           <field name="model">product.category</field>
+           <field name="inherit_id"
+            ref="product.product_category_form_view"/>
+            <field name="groups_id" eval="[(4, ref('odoo_multi_channel_sale.group_multi_channel_user'))]"/>
+              <field name="arch" type="xml">
+                <xpath expr="//group[last()]" position="after">
+                  <notebook>
+                    <page name='channel' string='Channel'>
+                      <group name='categories' string="Categories">
+                        <field name="channel_category_ids" nolabel='1'>
+                        <tree editable="bottom">
+                          <field name='instance_id'/>
+                          <field name='extra_category_domain_ids' invisible="1"/>
+                          <field name= 'extra_category_ids' widget="many2many_tags" options="{'no_create_edit': True}" attrs= "{'readonly':[('instance_id','=', False)],'required':[('instance_id','!=', False)]}"/>
+                        </tree>
+                        </field>
+                      </group>
+                      <group name='mapping' string="Mappings">
+                        <field name="channel_mapping_ids"  readonly='1' nolabel='1'/>
+                      </group>
+                    </page>
+                  </notebook>
+              </xpath>
+              </field>
+        </record>
+        <record id="view_partner_form" model="ir.ui.view">
+            <field name="name">odoo.multi.channel.sale.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id"
+              ref="base.view_partner_form"/>
+            <field name="groups_id" eval="[(4, ref('odoo_multi_channel_sale.group_multi_channel_user'))]"/>
+            <field name="arch" type="xml">
+               <xpath expr="//notebook" position="inside">
+                    <page name='channel' string='Channel'>
+                      <group name='mapping' string="Mappings">
+                        <field name="channel_mapping_ids" readonly='1' nolabel='1'/>
+                      </group>
+                    </page>
+              </xpath>
+            </field>
+        </record>
+       <record id="view_order_form" model="ir.ui.view">
+          <field name="name">odoo.multi.channel.sale.order</field>
+          <field name="model">sale.order</field>
+          <field name="inherit_id" ref="sale.view_order_form"/>
+          <field name="groups_id" eval="[(4, ref('odoo_multi_channel_sale.group_multi_channel_user'))]"/>
+          <field name="arch" type="xml">
+             <xpath expr="//notebook" position="inside">
+                  <page name='channel' string='Channel'>
+                    <group name='mapping' string="Mappings">
+                      <field name="channel_mapping_ids" readonly='1' nolabel='1'/>
+                    </group>
+                  </page>
+            </xpath>
+          </field>
+      </record>
+
+      <record id="odoo_multi_channel_sale.search_product_pricelist_items" model="ir.ui.view">
+         <field name="name">product.pricelist.item.search</field>
+         <field name="model">product.pricelist.item</field>
+         <field name="arch" type="xml">
+             <search string="Pricelist">
+               <field name="product_id"
+                 filter_domain="[('product_id','ilike',self)]"/>
+                 <field name="product_tmpl_id"
+                   filter_domain="[('product_tmpl_id','ilike',self)]"/>
+                 <group expand="0" string="Group By...">
+                 <filter string="Pricelist" name="filter_by_pricelist_id" context="{'group_by':'pricelist_id'}"/>
+                   <group string='Filters'>
+                       <filter icon="terp-check" name="pricelist_id" string="Pricelist"
+                           domain="[]" help="Pricelist" context="{'group_by':'pricelist_id'}"/>
+                   </group>
+                 </group>
+             </search>
+             </field>
+     </record>
+    <record id="channel_pricelist_item_tree" model="ir.ui.view">
+          <field name="name">product.pricelist.item.tree</field>
+          <field name="model">product.pricelist.item</field>
+          <field name="type">tree</field>
+          <field name="arch" type="xml">
+              <tree editable="bottom">
+                <field name="pricelist_id"/>
+                <field name="name" string="Applicable On"/>
+                <field name="min_quantity"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="price" string="Price"/>
+                <field name="base" invisible="1"/>
+                <field name="product_id" invisible="1"/>
+                <field name="product_tmpl_id" invisible="1"/>
+                <field name="price_discount" invisible="1"/>
+                <field name="applied_on" invisible="1"/>
+                <field name="compute_price" invisible="1"/>
+              </tree>
+              
+          </field>
+      </record>
+      <record id="product_pricelist_item_action" model="ir.actions.act_window">
+          <field name="name">Pricelists Item</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">product.pricelist.item</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+
+          <field name="context">{'search_default_filter_by_pricelist_id':1}</field>
+      </record>
+      <menuitem id="menu_product_pricelist_item_main"
+         name="Pricelists Items" parent="sale.product_menu_catalog"
+          action="product_pricelist_item_action"
+          groups="product.group_sale_pricelist" sequence="100"
+        />
+
+
+    </data>
+</openerp>

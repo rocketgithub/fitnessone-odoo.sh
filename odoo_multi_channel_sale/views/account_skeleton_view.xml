@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record id="channel_account_mappings_search" model="ir.ui.view">
+            <field name="name">channel.account.mappings.search</field>
+            <field name="model">channel.account.mappings</field>
+            <field name="arch" type="xml">
+            <search string="Channel Account Mappings">
+                <group expand="0" string="Group By...">
+                  <field name="tax_name"/>
+                  <field name="store_tax_value_id"/>
+
+                    <filter string="Channel" name="filter_by_ecom_store" context="{'group_by':'ecom_store'}"/>
+                    <filter string="Instance" name="filter_by_channel_id" context="{'group_by':'channel_id'}"/>
+                    <filter string="Need Update" name='need_sync'  domain="[]" context="{'group_by':'need_sync'}"/>
+                    <group string='Filters'>
+                        <filter icon="terp-check" name="ecom_store" string="Channel"
+                            domain="[]" help="Channel" context="{'group_by':'ecom_store'}"/>
+                            <filter icon="terp-check" name="channel_id" string="Instance"
+                            domain="[]" help="Instance" context="{'group_by':'channel_id'}"/>
+                    </group>
+
+                 </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="channel_account_mapping_form" model="ir.ui.view">
+            <field name="name">channel.account.mappings.form</field>
+            <field name="model">channel.account.mappings</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form create='1'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='channel_id'/>
+                            </group>
+                            <group>
+                                <field name='ecom_store'/>
+                                <field name="need_sync"/>
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="tax_name"/>
+                            </group>
+                            <group>
+                                <field name="store_tax_value_id"/>
+                            </group>
+                            <field name="odoo_tax_id" invisible="1"/>
+
+                        </group>
+                        <group>
+                            <group>
+                                <field name="tax_type" />
+                            </group>
+                            <group>
+                                <field name="include_in_price"/>
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+    	<record id="channel_account_mapping_tree" model="ir.ui.view">
+            <field name="name">channel.account.mappings.tree</field>
+            <field name="model">channel.account.mappings</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Channel Account Mapping" colors="red:need_sync=='yes'" create="1">
+
+                    <field name="channel_id"/>
+                    <field name="store_tax_value_id"/>
+                    <field name="odoo_tax_id"/>
+                    <field name="tax_name"/>
+                    <field name="need_sync"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="channel_account_mapping_action_id" model="ir.actions.act_window">
+            <field name="name">Channel Account Mappings</field>
+            <field name="res_model">channel.account.mappings</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{"search_default_filter_by_ecom_store":1,"search_default_filter_by_channel_id":1}</field>
+            <field name="view_id" ref="channel_account_mapping_tree"/>
+        </record>
+
+
+        <record id="channel_account_journal_mappings_search" model="ir.ui.view">
+            <field name="name">channel.account.journal.mappings.search</field>
+            <field name="model">channel.account.journal.mappings</field>
+            <field name="arch" type="xml">
+            <search string="Channel Account Journal Mappings">
+                 <group expand="0" string="Group By...">
+                   <field name="journal_code"/>
+                   <field name="store_journal_name"/>
+
+                    <filter string="Channel" name="filter_by_ecom_store" context="{'group_by':'ecom_store'}"/>
+                    <filter string="Instance" name="filter_by_channel_id" context="{'group_by':'channel_id'}"/>
+                    <filter string="Need Update" name='need_sync'  domain="[]" context="{'group_by':'need_sync'}"/>
+                    <group string='Filters'>
+                        <filter icon="terp-check" name="ecom_store" string="Channel"
+                            domain="[]" help="Channel" context="{'group_by':'ecom_store'}"/>
+                            <filter icon="terp-check" name="channel_id" string="Instance"
+                            domain="[]" help="Instance" context="{'group_by':'channel_id'}"/>
+                    </group>
+
+                 </group>
+            </search>
+            </field>
+        </record>
+
+        <record id="channel_account_journal_mapping_form" model="ir.ui.view">
+            <field name="name">channel.account.journal.mappings.form</field>
+            <field name="model">channel.account.journal.mappings</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form create='1'>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name='channel_id'/>
+                            </group>
+                            <group>
+                                <field name='ecom_store'/>
+                                <field name="need_sync"/>
+                            </group>
+                        </group>
+                        <group col="4">
+
+                            <field name="odoo_journal"/>
+                             <field name="name"/>
+                            <field name="store_journal_name"/>
+                            <field name="journal_code"/>
+                            <field name="odoo_journal_id" invisible="1"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+        <record id="channel_account_journal_mapping_tree" model="ir.ui.view">
+            <field name="name">channel.account.journal.mappings.tree</field>
+            <field name="model">channel.account.journal.mappings</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Channel Account Journal Mapping" colors="red:need_sync=='yes'" create="1">
+
+                    <field name="channel_id"/>
+                    <field name="ecom_store"/>
+                    <field name="name"/>
+                    <field name="store_journal_name"/>
+                    <field name="journal_code"/>
+                    <field name="odoo_journal_id"/>
+                    <field name="odoo_journal"/>
+                    <field name="need_sync"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="channel_account_journal_mapping_action_id" model="ir.actions.act_window">
+            <field name="name">Channel Account Journal Mappings</field>
+            <field name="res_model">channel.account.journal.mappings</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_filter_by_ecom_store":1,"search_default_filter_by_channel_id":1}</field>
+            <field name="view_id" ref="channel_account_journal_mapping_tree"/>
+        </record>
+
+
+ 	</data>
+</openerp>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+	<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+	<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+	<record id="wizard_message_form" model="ir.ui.view">
+            <field name="name">wizard.message.form</field>
+            <field name="model">wizard.message</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form >
+					<field name="text" colspan="4" nolabel="1" readonly="1" widget="html"/>
+					<newline/>
+					<separator colspan="6"/>
+					<footer>
+						<button special="cancel" class="oe_highlight" string="Close" />
+					</footer>
+
+                </form>
+            </field>
+        </record>
+		<record id="wizard_message_action" model="ir.actions.act_window">
+            <field name="name">wizard.message</field>
+            <field name="res_model">wizard.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record id="odoo_multi_channel_sale.update_mapping_wizard_form"
+                    model="ir.ui.view">
+            <field name="name">Update Mapping</field>
+            <field name="model">update.mapping.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Update Mapping">
+                    <sheet>
+                        <group>
+                            <field name='need_sync'/>
+                        </group>
+                    </sheet>
+                    <footer>
+                            <button name="save_status" string="Save"
+                                    type="object" class="oe_highlight"/>
+                            or
+                            <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="odoo_multi_channel_sale.action_update_mapping" model="ir.actions.act_window">
+            <field name="name">Update Mapping</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.mapping.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="odoo_multi_channel_sale.update_mapping_wizard_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+				<record id="action_view_sale_advance_payment_inv" model="ir.actions.act_window">
+            <field name="name">Invoice Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.advance.payment.inv</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="groups_id" eval="[(4,ref('sales_team.group_sale_salesman'))]"/>
+            <!-- TODO: check if we need this -->
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+        </record>
+
+
+
+
+	</openerp>

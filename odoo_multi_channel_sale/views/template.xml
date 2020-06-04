@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+	<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+	 <template 
+          id="odoo_multi_channel_sale.assets_backend" 
+          name="odoo_multi_channel_sale popup" 
+          inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <!-- <script type="text/javascript" src="/odoo_multi_channel_sale/static/src/js/odoo_multi_channel_sale.js"></script> -->
+                 
+                <link rel="stylesheet" href="/odoo_multi_channel_sale/static/src/less/channel_dashboard.less"/>
+                <link rel="stylesheet" href="/odoo_multi_channel_sale/static/src/less/odoo_multi_channel_sale.less"/>
+            </xpath>
+    </template>
+
+</openerp>

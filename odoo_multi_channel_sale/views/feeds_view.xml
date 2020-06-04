@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record id="category_feed_view_search" model="ir.ui.view">
+            <field name="name">category.feed</field>
+            <field name="model">category.feed</field>
+            <field name="arch" type="xml">
+            <search string="Feed">
+				<field name="name"/>
+				<field name="store_id"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Instance" name="filter_by_channel_id" context="{'group_by':'channel_id'}"/>
+                    <filter string="State" name='filter_by_state'  domain="[]" context="{'group_by':'state'}"/>
+                    <group string='Filters'>
+
+                        <filter icon="terp-check" name="channel_id" string="Instance"
+                            domain="[]" help="Instance" context="{'group_by':'channel_id'}"/>
+                        <filter icon="terp-check" name="state" string="State"
+                            domain="[]" help="Instance" context="{'group_by':'state'}"/>
+                    </group>
+
+                 </group>
+            </search>
+            </field>
+        </record>
+        <record id="product_feed_view_search" model="ir.ui.view">
+            <field name="name">product.feed</field>
+            <field name="model">product.feed</field>
+            <field name="arch" type="xml">
+            <search string="Feed">
+			<field name="store_id"/>
+                 <field name="name"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Instance" name="filter_by_channel_id" context="{'group_by':'channel_id'}"/>
+                    <filter string="State" name='filter_by_state'  domain="[]" context="{'group_by':'state'}"/>
+                    <group string='Filters'>
+
+                        <filter icon="terp-check" name="channel_id" string="Instance"
+                            domain="[]" help="Instance" context="{'group_by':'channel_id'}"/>
+                        <filter icon="terp-check" name="state" string="State"
+                            domain="[]" help="Instance" context="{'group_by':'state'}"/>
+                    </group>
+
+                 </group>
+            </search>
+            </field>
+        </record>
+
+
+    	<record id="product_variant_feed_view_form" model="ir.ui.view">
+			<field name="name">product.variant.feed.form</field>
+			<field name="model">product.variant.feed</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+
+						<group name="primary_info" col="4">
+							<field name="store_id"/>
+							<field name="default_code" />
+							<field name="list_price" />
+							<field name="standard_price"/>
+
+                		</group>
+                		<notebook>
+                			<page string="NameValue List">
+                				<group>
+                					<p class="oe_grey oe_inline">If the price from ecommerce store is attribute based then add price also in the NameValue string of the varinat attributes below. Format  will be [{'name': 'Attribute Name', 'value': 'Attribute Value','price':'price','attrib_name_id':'Attribute name Id','attrib_value_id':'Atribute Value Id'}] <br/>
+                					If the price from ecommerce store is variant based then do not add price in the NameValue string of the varinat attributes below. Format will be [{'name': 'Attribute Name', 'value': 'Attribute Value','attrib_name_id':'Attribute name Id','attrib_value_id':'Atribute Value Id'}].
+                				</p>
+                					<newline/>
+									<field name="name_value" required="1" nolabel="1" placeholder="[{'name': 'Memory', 'value': '16 GB','attrib_name_id':'1', 'attrib_value_id':'9'}, {'name': 'Color', 'value': 'White','attrib_name_id':'2', 'attrib_value_id':'8'}, {'name': 'Wi-Fi', 'value': '2.4 GHz','price':10.0,'attrib_name_id':'3', 'attrib_value_id':'7'}]"/>
+								</group>
+                			</page>
+	                    	 <page name="general" string="General Info">
+	                    	 	<group>
+	                    	 	<group>
+								<field name="image" widget='image' />
+		                		</group>
+		                		<group>
+		                			<field name="image_url" />
+		                		</group>
+		                		</group>
+		                		<group>
+
+		                        <group>
+								<field name="qty_available"  />
+								<field name="length" />
+		                    	<field name="width"/>
+                    	 		<field name="height"/>
+		                		</group>
+		                		<group>
+			                    	<field name="weight" />
+			                    	<field name="weight_unit"/>
+	                    	 		<field name="dimensions_unit"/>
+		                		</group>
+		                		</group>
+	                    	</page>
+                    		 <page name="description" string="Description">
+		                        <group>
+									<field name="description_sale" />
+									<field name="description_purchase"/>
+	                			</group>
+	                    	</page>
+	                    	<page name="extra" string='Extra'>
+			            		<group>
+			                        <group>
+			                            <field name="wk_product_id_type" placeholder="values can be wk_upc,wk_ean,wk_isbn"/>
+			                        </group>
+			                        <group>
+                                		<field name="barcode"/>
+			                        </group>
+									<group>
+                                		<field name="hs_code"/>
+			                        </group>
+			                    </group>
+	                    	</page>
+                		</notebook>
+
+               	 	</sheet>
+                </form>
+			</field>
+        </record>
+
+    	<record id="product_feed_view_tree" model="ir.ui.view">
+			<field name="name">product.feed.tree</field>
+			<field name="model">product.feed</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="state"/>
+                    <field name="name"/>
+                    <field name="channel_id"/>
+                    <field name="store_id"/>
+                    <!-- <field name="categ_id"/> -->
+                </tree>
+			</field>
+        </record>
+		<record id="product_feed_view_form" model="ir.ui.view">
+			<field name="name">product.feed.form</field>
+			<field name="model">product.feed</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="import_items"
+							 attrs= "{'invisible':[('state','=', 'done')]}"
+							 string="Evaluate Feed" type="object" class="oe_highlight" />
+					 	<button
+						 	name = 'open_mapping_view'
+        					type='object'
+        					string='Mapping'
+        					attrs="{'invisible': [('state','not in',('done','update'))]}"
+        					context="{
+        					'mapping_model':'channel.template.mappings',
+        					'store_field':'store_product_id',
+        					}"/>
+						 <field name="state" widget="statusbar"/>
+					</header>
+					<sheet>
+
+						<group name="primary_info">
+							<group>
+								<field name="name" required='1' attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="store_id" required='1'  attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="default_code" attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="list_price" attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="standard_price" attrs= "{'readonly':[('state','=', 'done')]}"/>
+                <field name="type" attrs= "{'readonly':[('state','=', 'done')]}"/>
+
+
+	                		</group>
+	                		<group>
+								<field name="active" />
+		                    	<field name="channel_id"  widget='selection' required='1' attrs= "{'readonly':[('state','=', 'done')]}"/>
+		                    	<field name="channel" readonly='1'/>
+
+								<!-- <field name="categ_id"
+									placeholder='C1'
+									attrs= "{'readonly':[('state','=', 'done')]}"/> -->
+								<field name="extra_categ_ids"
+									placeholder='C1,C2,C3'
+									attrs= "{'readonly':[('state','=', 'done')]}"/>
+
+	                		</group>
+
+                		</group>
+                		<notebook>
+	                    	 <page name="general" string="General Info">
+	                    	 	<group>
+	                    	 	<group>
+								<field name="image" widget='image'  attrs= "{'readonly':[('state','=', 'done')]}" />
+		                		</group>
+		                		<group>
+		                			<field name="image_url" attrs= "{'readonly':[('state','=', 'done')]}"/>
+		                		</group>
+		                		</group>
+		                		<group>
+
+		                        <group>
+								<field name="qty_available" attrs= "{'readonly':[('state','=', 'done')]}"  />
+								<field name="length"
+			                    		attrs= "{'readonly':[('state','=', 'done')]}" />
+		                    	<field name="width"
+		                    	 		attrs= "{'readonly':[('state','=', 'done')]}" />
+                    	 		<field name="height"
+		                    	 		attrs= "{'readonly':[('state','=', 'done')]}" />
+		                		</group>
+		                		<group>
+			                    	<field name="weight"
+			                    		attrs= "{'readonly':[('state','=', 'done')]}" />
+			                    	<field name="weight_unit"
+			                    		attrs= "{'readonly':[('state','=', 'done')]}" />
+
+
+	                    	 		<field name="dimensions_unit"
+		                    	 		attrs= "{'readonly':[('state','=', 'done')]}" />
+		                		</group>
+		                		</group>
+	                    	</page>
+
+                    		 <page name="description" string="Description">
+		                        <group>
+								<field name="description_sale" attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="description_purchase" attrs= "{'readonly':[('state','=', 'done')]}"/>
+	                			</group>
+	                    	</page>
+	                    	<page name="variants" string="Variants">
+	                    		<group>
+	                    			<field name="feed_variants" nolabel="1">
+	                    				<tree>
+	                    					<field name="qty_available"/>
+											<field name="list_price"/>
+	                    					<field name="name_value"/>
+	                    				</tree>
+	                    			</field>
+								</group>
+	                    	</page>
+	                    	<page name="extra" string='Extra'>
+			            		<group>
+			                        <group>
+			                            <field name="wk_product_id_type"
+			                            attrs= "{'readonly':[('state','=', 'done')]}" placeholder="values can be wk_upc,wk_ean,wk_isbn"/>
+			                        </group>
+			                        <group>
+                                <field name="barcode"
+			                            attrs= "{'readonly':[('state','=', 'done')]}"/>
+
+			                        </group>
+									<group>
+									<field name="hs_code"
+			                            attrs= "{'readonly':[('state','=', 'done')]}"/>
+									</group>
+			                    </group>
+	                    	</page>
+                		</notebook>
+
+               	 	</sheet>
+                  <group class="oe_chatter">
+                     <field name="message" string=" " readonly='1'/>
+                   </group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_product_feed" model="ir.actions.act_window">
+			<field name="name">Product Feeds</field>
+			<field name="res_model">product.feed</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="product_feed_view_tree"/>
+			<field name="context">{"search_default_filter_by_state":1,"search_default_filter_by_channel_id":1}
+			</field>
+		</record>
+
+
+    	<record id="category_feed_view_tree" model="ir.ui.view">
+			<field name="name">category.feed.tree</field>
+			<field name="model">category.feed</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="state"/>
+                    <field name="name"/>
+                    <field name="channel_id"/>
+                    <field name="store_id"/>
+                    <field name="parent_id"/>
+                    <field name="leaf_category"/>
+                </tree>
+			</field>
+        </record>
+		<record id="category_feed_view_form" model="ir.ui.view">
+			<field name="name">category.feed.form</field>
+			<field name="model">category.feed</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<button name="import_items"
+						attrs= "{'invisible':[('state','=', 'done')]}"
+						string="Evaluate Feed" type="object" class="oe_highlight" />
+					 	<button
+						 	name = 'open_mapping_view'
+        					type='object'
+        					string='Mapping'
+        					attrs="{'invisible': [('state','not in',('done','update'))]}"
+        					context="{
+        					'mapping_model':'channel.category.mappings',
+        					'store_field':'store_category_id',
+        					}"/>
+						 <field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+						<group name="primary_info">
+							<group>
+								<field name="name" required='1' attrs= "{'readonly':[('state','=', 'done')]}"/>
+		                    	<field name="store_id" required='1'  attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="parent_id" attrs= "{'readonly':[('state','=', 'done')]}"/>
+								<field name="leaf_category"/>
+	                		</group>
+	                		<group>
+								<field name="active" />
+		                    	<field name="channel_id" widget='selection' required='1' attrs= "{'readonly':[('state','=', 'done')]}"/>
+		                    	<field name="channel" readonly='1'/>
+	                		</group>
+                		</group>
+                		<!-- <group name="secondary_info" attrs= "{'readonly':[('state','=', 'done')]}">
+                			<field name="description" attrs= "{'readonly':[('state','=', 'done')]}"/>
+                		</group> -->
+               	 	</sheet>
+                  <group class="oe_chatter">
+                     <field name="message" string=" " readonly='1'/>
+                   </group>
+				</form>
+			</field>
+		</record>
+
+		<record id="action_category_feed" model="ir.actions.act_window">
+			<field name="name">Category Feeds</field>
+			<field name="res_model">category.feed</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="category_feed_view_tree"/>
+			<field name="context">{"search_default_filter_by_state":1,"search_default_filter_by_channel_id":1}
+			</field>
+		</record>
+
+
+
+    </data>
+</openerp>
