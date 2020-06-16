@@ -1,1 +1,2 @@
 zeep
+woocommerce==1.2.1
