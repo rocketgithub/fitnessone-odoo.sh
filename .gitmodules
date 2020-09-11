@@ -55,3 +55,6 @@
 [submodule "fel_infile_nit"]
 	path = fel_infile_nit
 	url = https://github.com/rocketgithub/fel_infile_nit.git
+[submodule "crm_flow"]
+	path = crm_flow
+	url = git@github.com:rocketgithub/crm_flow.git
