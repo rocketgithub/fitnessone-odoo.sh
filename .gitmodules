@@ -58,3 +58,6 @@
 [submodule "crm_flow"]
 	path = crm_flow
 	url = git@github.com:rocketgithub/crm_flow.git
+[submodule "pos_fel"]
+	path = pos_fel
+	url = git@github.com:rocketgithub/pos_fel.git
