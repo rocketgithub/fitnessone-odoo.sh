@@ -61,3 +61,7 @@
 [submodule "pos_fel"]
 	path = pos_fel
 	url = git@github.com:rocketgithub/pos_fel.git
+[submodule "fel_gt"]
+	path = fel_gt
+	url = git@github.com:rocketgithub/fel_gt.git
+	branch = 13.0
