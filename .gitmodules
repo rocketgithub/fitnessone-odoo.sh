@@ -58,3 +58,7 @@
 [submodule "crm_flow"]
 	path = crm_flow
 	url = git@github.com:rocketgithub/crm_flow.git
+[submodule "fel_gt"]
+	path = fel_gt
+	url = git@github.com:rocketgithub/fel_gt.git
+	branch = 13.0
