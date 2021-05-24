@@ -69,3 +69,6 @@
 [submodule "hr_expense_invoice"]
 	path = hr_expense_invoice
 	url = git@github.com:rocketgithub/hr_expense_invoice.git
+[submodule "payment_visanet"]
+	path = payment_visanet
+	url = git@github.com:rocketgithub/payment_visanet.git
